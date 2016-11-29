@@ -74,11 +74,15 @@ int main(int argc, char *argv[])
                 printf("%s\t", user_info->ut_user);
                 printf("%s\t", user_info->ut_line);
 
-                if (localtime_r(&user_info->ut_tv.tv_sec, &user_lt) == NULL)
+                if (localtime_r(&user_info->ut_tv.tv_sec, &user_lt) == NULL) {
+                    perror(pgr_name);
                     exit(EXIT_FAILURE);
+                }
 
-                if (strftime(date, date_len, "%F %R", &user_lt) < 0)
+                if (strftime(date, date_len, "%F %R", &user_lt) < 0) {
+                    perror(pgr_name);
                     exit(EXIT_FAILURE);
+                }
 
                 printf("%s\t", date);
                 printf("(%s)\t", user_info->ut_host);
