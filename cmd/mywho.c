@@ -76,12 +76,12 @@ int main(int argc, char *argv[])
 
                 if (localtime_r(&user_info->ut_tv.tv_sec, &user_lt) == NULL) {
                     perror(pgr_name);
-                    exit(EXIT_FAILURE);
+                    return EXIT_FAILURE;
                 }
 
                 if (strftime(date, date_len, "%F %R", &user_lt) < 0) {
                     perror(pgr_name);
-                    exit(EXIT_FAILURE);
+                    return EXIT_FAILURE;
                 }
 
                 printf("%s\t", date);
