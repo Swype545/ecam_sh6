@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 
     if (getcwd(pathname, pathname_len) == NULL) {
         perror(pgr_name);
-        exit(EXIT_FAILURE);
+        return EXIT_FAILURE;
     }
 
     printf("%s\n", pathname);
